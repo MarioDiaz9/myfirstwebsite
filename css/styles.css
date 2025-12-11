@@ -1,0 +1,325 @@
+/*
+Colors Used
+
+Background Color::#222c12
+Text Color:#EFF5D2
+Secondary Color:#8FA31E
+Link Color:#C6D870
+Header and Footer Background Color: #171f0a
+Button Active Color: #96a158
+*/
+
+:root {
+    --backgroundgreen: #222c12;
+    --headerfootergreen: #171f0a;
+    --textcolor: #EFF5D2;
+    --secondarycolor: #8FA31E;
+    --linkcolor: #C6D870;
+    --linkvisitedcolor: rgb(187, 238, 59);
+    --linkactivecolor: #919b5d;
+    --buttonactivecolor: #96a158;
+    --outlinecolor1: #96a158;
+    --outlinecolor2: #EFF5D2;
+    --outlinecolor3: #677904;
+    --generalmargin: 40px;
+
+}
+
+body {
+    background-color: var(--backgroundgreen);
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--textcolor);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header,
+footer {
+    flex: 0 0 auto;
+    background-color: var(--headerfootergreen)
+}
+
+main {
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--secondarycolor);
+}
+
+.page-subtitle {
+    text-align: center;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.long-text {
+    margin-left: var(--generalmargin);
+    margin-right: var(--generalmargin);
+}
+
+/* LINKS */
+
+a {
+    color: var(--linkcolor);
+}
+
+a:visited {
+    color: var(--linkvisitedcolor);
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+a:active {
+    color: var(--linkactivecolor);
+}
+
+button,
+.button {
+    background-color: var(--secondarycolor);
+    color: var(--textcolor);
+    font-size: 20px;
+    padding: 10px 10px;
+    max-width: 200px;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+}
+
+button:active,
+.button:active {
+    background-color: var(--buttonactivecolor);
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+    border: 2px solid var(--outlinecolor3);
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* WORK GRID */
+
+/* .grid__item {
+ display: inline-block;
+ width: 33%;
+} */
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
+    margin: var(--generalmargin);
+}
+
+.grid__item {
+    background-color: var(--secondarycolor);
+    color: var(--textcolor);
+    text-align: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* I USED AI FOR THIS OPACITY EFFECT WHEN HOVERING OVER THE ITEMS BUT I FORGOT TO TAKE SCREENSHOTS :( */
+#grid-container:has(.grid__item:hover) .grid__item:not(:hover) {
+    opacity: 60%;
+}
+
+.grid__item:hover {
+    transform: scale(1.05);
+}
+
+/* TABLE */
+
+#skill-table {
+    background-color: var(--headerfootergreen);
+    border: 2px solid var(--outlinecolor1);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: var(--generalmargin);
+    padding: 10px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--outlinecolor2);
+}
+
+/* FORM */
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--headerfootergreen);
+    border: 2px solid var(--outlinecolor1);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 500px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+#contact-form .button {
+    max-width: 100%;
+}
+
+/* COMMON HEADER */
+
+.header {
+    display: flex;
+    width: 100%;
+}
+
+.header__item {
+    flex: 0 1 200px;
+}
+
+.header__item:first-child {
+    border-radius: 50%;
+    scale: 70%;
+    flex-shrink: 0;
+}
+
+.header__item:last-child {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.navigation-list {
+    list-style-type: none;
+    margin-right: 60px;
+    margin-top: 90px;
+}
+
+.navigation-list li {
+    display: inline-block;
+    margin-left: var(--generalmargin);
+}
+
+.profile {
+    max-width: 700px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.profile__portrait {
+    border-radius: 20%;
+    float: left;
+    width: 100%;
+    max-width: 400px;
+    margin-right: var(--generalmargin);
+}
+
+.footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+}
+
+/* ANIMATION TEST */
+
+
+#skyline-animation-box {
+    position: relative;
+    height: 100vmin;
+    overflow: hidden;
+}
+
+.clouds-back,
+.skyline-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.clouds-back#clouds1 {
+    left: 50vmin;
+}
+
+.clouds-back#clouds2 {
+    left: -25vmin;
+}
+
+.clouds-back {
+    top: -14vmin;
+    animation: 10s cloud-movement infinite alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes cloud-movement {
+    0% {
+        transform: translateX(0vmin);
+    }
+
+    100% {
+        transform: translateX(-25vmin);
+    }
+}
+
+/* MEDIA QUERIES*/
+
+@media all and (max-width: 500px) {
+    #grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .navigation-list {
+        margin-right: 20px;
+        margin-top: 60px;
+    }
+
+    .navigation-list li {
+        margin-left: 0;
+        display: block;
+    }
+
+    .long-text {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+    #grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media all and (max-width: 750px) {
+    #grid-container {
+        grid-gap: 10px;
+    }
+
+    .grid__item:last-child {
+        grid-column: auto / auto;
+        grid-row: auto / auto;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
